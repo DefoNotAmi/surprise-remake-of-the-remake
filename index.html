@@ -46,9 +46,10 @@ body{
 
 
 .nebula{
-
-position:absolute;
-inset:0;
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+}
 
 background:
 
@@ -333,22 +334,13 @@ rotate(-5deg);
 
 
 .interface{
-
-
-height:100vh;
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-padding:20px;
-
-position:relative;
-
-z-index:5;
-
+    height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    position:relative;
+    z-index:50;
 }
 
 
@@ -565,46 +557,10 @@ transition:1s;
 
 
 
-button{
-
-
-margin-top:30px;
-
-
-padding:
-
-15px 45px;
-
-
-font-family:inherit;
-
-
-background:
-
-transparent;
-
-
-border:
-
-1px solid #9deaff;
-
-
-color:white;
-
-
-border-radius:30px;
-
-
-cursor:pointer;
-
-
-letter-spacing:2px;
-
-
-transition:.4s;
-
-
+html, body{
+    touch-action:manipulation;
 }
+
 
 
 
@@ -724,7 +680,14 @@ opacity:0;
 /* =========================
    TRANSITION OVERLAY
 ========================= */
+.transition{
+    visibility:hidden;
+}
 
+.transition.active{
+    visibility:visible;
+    pointer-events:none;
+}
 
 .transition{
 
