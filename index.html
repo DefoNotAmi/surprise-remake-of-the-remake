@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<link href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cosmic Transmission</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+body{
+
+    height:100vh;
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at 70% 20%, #25355f 0%, transparent 30%),
+    radial-gradient(circle at 20% 80%, #1c2048 0%, transparent 35%),
+    linear-gradient(#02030b,#060817);
+
+    color:white;
+
+    .title{
+    font-family:'Audiowide';
+}
+
+}
+
+
+/* =========================
+   SPACE BACKGROUND
+========================= */
+
+
+.nebula{
+
+position:absolute;
+inset:0;
+
+background:
+
+radial-gradient(circle at 30% 40%,
+rgba(80,150,255,.15),
+transparent 25%),
+
+radial-gradient(circle at 80% 60%,
+rgba(200,120,255,.12),
+transparent 25%);
+
+animation:nebulaMove 20s infinite alternate;
+
+}
+
+
+@keyframes nebulaMove{
+
+from{
+transform:scale(1);
+}
+
+to{
+transform:scale(1.2);
+}
+
+}
+
+
+
+
+.star{
+
+position:absolute;
+
+width:2px;
+height:2px;
+
+background:white;
+
+border-radius:50%;
+
+opacity:.7;
+
+animation:
+twinkle infinite alternate;
+
+}
+
+
+@keyframes twinkle{
+
+from{
+opacity:.2;
+}
+
+to{
+opacity:1;
+}
+
+}
+
+
+
+
+/* =========================
+   PLANETS
+========================= */
+
+
+.planet{
+
+position:absolute;
+
+cursor:pointer;
+
+transition:.5s;
+
+}
+
+
+.planet:hover{
+
+filter:
+brightness(1.3);
+
+transform:scale(1.05);
+
+}
+
+
+
+/* Saturn */
+
+.saturn{
+
+right:-80px;
+top:70px;
+
+width:320px;
+height:320px;
+
+border-radius:50%;
+
+
+background:
+
+radial-gradient(
+circle at 35% 30%,
+#ffe4a8,
+#b77b44 45%,
+#3c2418
+);
+
+
+box-shadow:
+
+0 0 120px rgba(255,190,110,.35);
+
+}
+
+
+
+.saturn .rings{
+
+
+position:absolute;
+
+width:480px;
+height:110px;
+
+left:-80px;
+top:105px;
+
+border-radius:50%;
+
+border:
+
+25px solid rgba(230,190,130,.45);
+
+
+transform:rotate(-18deg);
+
+}
+
+
+
+
+.moon{
+
+
+left:12%;
+top:22%;
+
+width:90px;
+height:90px;
+
+border-radius:50%;
+
+background:
+
+radial-gradient(
+circle,
+#d9d9d9,
+#666
+);
+
+
+box-shadow:
+
+0 0 40px rgba(255,255,255,.3);
+
+
+}
+
+
+
+
+.planetBlue{
+
+
+bottom:15%;
+right:20%;
+
+width:120px;
+height:120px;
+
+
+border-radius:50%;
+
+
+background:
+
+radial-gradient(
+circle at 35% 35%,
+#75e5ff,
+#21366f
+);
+
+
+box-shadow:
+
+0 0 60px #3fa9ff;
+
+}
+
+
+
+/* =========================
+   SHIP
+========================= */
+
+
+.ship{
+
+
+position:absolute;
+
+left:-120px;
+
+top:45%;
+
+
+font-size:70px;
+
+
+animation:
+
+fly 22s linear infinite;
+
+
+filter:
+
+drop-shadow(
+0 0 15px #70dfff
+);
+
+}
+
+
+@keyframes fly{
+
+
+0%{
+
+transform:
+translateY(0)
+rotate(-5deg);
+
+}
+
+
+50%{
+
+transform:
+translateY(-40px)
+rotate(5deg);
+
+}
+
+
+100%{
+
+left:120%;
+
+transform:
+translateY(0)
+rotate(-5deg);
+
+}
+
+
+}
+
+
+
+
+
+/* =========================
+   MAIN UI
+========================= */
+
+
+.interface{
+
+
+height:100vh;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+padding:20px;
+
+position:relative;
+
+z-index:5;
+
+}
+
+
+
+
+
+.transmission{
+
+
+width:min(720px,95%);
+
+
+background:
+
+linear-gradient(
+135deg,
+rgba(255,255,255,.12),
+rgba(0,0,0,.65)
+);
+
+
+border:
+
+1px solid rgba(160,220,255,.35);
+
+
+border-radius:20px;
+
+
+padding:35px;
+
+
+backdrop-filter:
+
+blur(15px);
+
+
+box-shadow:
+
+0 0 80px rgba(80,180,255,.15);
+
+
+position:relative;
+
+
+}
+
+
+
+
+
+/* corners */
+
+.transmission:before,
+.transmission:after{
+
+
+content:"";
+
+position:absolute;
+
+width:40px;
+height:40px;
+
+
+border-color:#8bdcff;
+
+}
+
+
+.transmission:before{
+
+top:-1px;
+left:-1px;
+
+border-top:2px solid;
+border-left:2px solid;
+
+}
+
+
+.transmission:after{
+
+bottom:-1px;
+right:-1px;
+
+border-right:2px solid;
+border-bottom:2px solid;
+
+}
+
+
+
+
+
+.topbar{
+
+
+display:flex;
+
+justify-content:space-between;
+
+
+font-size:12px;
+
+letter-spacing:3px;
+
+opacity:.7;
+
+
+margin-bottom:30px;
+
+}
+
+
+
+.signal{
+
+color:#9deaff;
+
+}
+
+
+
+
+
+.chapter{
+
+
+font-size:13px;
+
+letter-spacing:4px;
+
+margin-bottom:20px;
+
+color:#9ddcff;
+
+
+}
+
+
+
+
+.title{
+
+
+font-size:
+
+clamp(28px,6vw,55px);
+
+
+margin-bottom:25px;
+
+
+}
+
+
+
+
+.message{
+
+
+min-height:160px;
+
+
+font-size:
+
+clamp(16px,3vw,22px);
+
+
+line-height:1.8;
+
+
+color:#e9f8ff;
+
+
+}
+
+
+
+
+
+.progress{
+
+
+margin-top:25px;
+
+height:5px;
+
+background:
+rgba(255,255,255,.15);
+
+border-radius:20px;
+
+overflow:hidden;
+
+}
+
+
+
+.progress span{
+
+
+display:block;
+
+height:100%;
+
+width:20%;
+
+
+background:
+
+linear-gradient(
+90deg,
+#8bdcff,
+white
+);
+
+
+transition:1s;
+
+
+}
+
+
+
+
+button{
+
+
+margin-top:30px;
+
+
+padding:
+
+15px 45px;
+
+
+font-family:inherit;
+
+
+background:
+
+transparent;
+
+
+border:
+
+1px solid #9deaff;
+
+
+color:white;
+
+
+border-radius:30px;
+
+
+cursor:pointer;
+
+
+letter-spacing:2px;
+
+
+transition:.4s;
+
+
+}
+
+
+
+button:hover{
+
+
+background:#9deaff;
+
+color:#02030b;
+
+
+box-shadow:
+
+0 0 40px #9deaff;
+
+
+}
+
+
+
+
+
+/* =========================
+   FLOATING DATA
+========================= */
+
+
+.data{
+
+
+position:absolute;
+
+font-size:11px;
+
+opacity:.5;
+
+letter-spacing:2px;
+
+}
+
+
+
+.data.one{
+
+left:30px;
+top:40%;
+
+}
+
+
+.data.two{
+
+right:30px;
+bottom:30%;
+
+}
+
+
+
+/* =========================
+   CURSOR PARTICLES
+========================= */
+
+
+.particle{
+
+
+position:absolute;
+
+width:6px;
+
+height:6px;
+
+border-radius:50%;
+
+background:#b7edff;
+
+
+box-shadow:
+
+0 0 15px #b7edff;
+
+
+pointer-events:none;
+
+
+animation:
+
+particleFade .8s forwards;
+
+
+}
+
+
+
+@keyframes particleFade{
+
+
+to{
+
+transform:
+
+translateY(-40px)
+scale(0);
+
+
+opacity:0;
+
+}
+
+
+}
+
+
+
+
+/* =========================
+   TRANSITION OVERLAY
+========================= */
+
+
+.transition{
+
+
+position:fixed;
+
+inset:0;
+
+z-index:100;
+
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+
+pointer-events:none;
+
+
+opacity:0;
+
+
+}
+
+
+.transition.active{
+
+opacity:1;
+
+}
+
+
+
+.transition .line{
+
+
+position:absolute;
+
+
+height:1px;
+
+
+width:0;
+
+
+background:#b9edff;
+
+
+box-shadow:
+
+0 0 30px #b9edff;
+
+
+}
+
+
+.transition.active .line{
+
+
+animation:
+
+scanLine 2s;
+
+}
+
+
+
+@keyframes scanLine{
+
+
+from{
+
+width:0;
+
+}
+
+
+50%{
+
+width:100%;
+
+}
+
+
+to{
+
+width:0;
+
+}
+
+
+}
+
+
+
+.transitionText{
+
+
+text-align:center;
+
+opacity:0;
+
+}
+
+
+
+.transition.active .transitionText{
+
+
+animation:
+
+fadeMessage 2.5s forwards;
+
+
+}
+
+
+@keyframes fadeMessage{
+
+
+40%{
+
+opacity:1;
+
+}
+
+
+100%{
+
+opacity:1;
+
+}
+
+}
+
+
+
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<div class="nebula"></div>
+
+
+<div class="saturn planet">
+
+<div class="rings"></div>
+
+</div>
+
+
+<div class="moon planet"></div>
+
+
+<div class="planetBlue planet"></div>
+
+
+
+<div class="ship">
+
+🚀
+
+</div>
+
+
+
+<div class="data one">
+
+COORDINATES: SATURN ORBIT<br>
+SIGNAL: STABLE
+
+</div>
+
+
+<div class="data two">
+
+MEMORY BANK<br>
+LOVE DATA FOUND
+
+</div>
+
+
+
+<div class="interface">
+
+
+<div class="transmission">
+
+
+<div class="topbar">
+
+<span>
+PRIVATE SIGNAL
+</span>
+
+
+<span class="signal">
+
+CONNECTED ✦
+
+</span>
+
+</div>
+
+
+
+<div class="chapter">
+
+CHAPTER 01 / FIRST TRANSMISSION
+
+</div>
+
+
+
+<h1 class="title">
+
+For You
+
+</h1>
+
+
+
+<div class="message" id="message">
+
+
+I don't really want to play destiny...
+
+<br><br>
+
+but I want to play with you.
+
+</div>
+
+
+
+<div class="progress">
+
+<span id="bar"></span>
+
+</div>
+
+
+
+<button id="next">
+
+NEXT SIGNAL →
+
+</button>
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+<div class="transition" id="transition">
+
+
+<div class="line"></div>
+
+
+<div class="transitionText" id="transitionText">
+
+NEW MEMORY UNLOCKED
+
+</div>
+
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   STAR GENERATOR
+========================= */
+
+
+for(let i=0;i<260;i++){
+
+    let star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"%";
+    star.style.top=Math.random()*100+"%";
+
+    star.style.animationDuration=
+    (1+Math.random()*5)+"s";
+
+    star.style.transform=
+    `scale(${Math.random()*2})`;
+
+    document.body.appendChild(star);
+
+}
+
+
+
+/* =========================
+   CURSOR / TOUCH PARTICLES
+========================= */
+
+
+function createParticle(x,y){
+
+    let p=document.createElement("div");
+
+    p.className="particle";
+
+    p.style.left=x+"px";
+    p.style.top=y+"px";
+
+
+    document.body.appendChild(p);
+
+
+    setTimeout(()=>{
+
+        p.remove();
+
+    },800);
+
+}
+
+
+
+document.addEventListener(
+"mousemove",
+(e)=>{
+
+createParticle(
+e.clientX,
+e.clientY
+);
+
+});
+
+
+
+document.addEventListener(
+"touchmove",
+(e)=>{
+
+let touch=e.touches[0];
+
+createParticle(
+touch.clientX,
+touch.clientY
+);
+
+});
+
+
+
+
+
+
+/* =========================
+   STORY SYSTEM
+========================= */
+
+
+let current=0;
+
+
+const messages=[
+
+
+{
+
+chapter:
+"CHAPTER 01 / FIRST TRANSMISSION",
+
+text:
+
+`
+I don't really want to play destiny...
+
+<br><br>
+
+but I want to play with you.
+
+<br><br>
+
+<i>
+Maybe I don't know every star,
+but I want to learn your universe.
+</i>
+`
+
+},
+
+
+
+{
+
+
+chapter:
+"CHAPTER 02 / SIGNAL FOUND",
+
+
+text:
+
+`
+I might pay for this universe...
+
+<br><br>
+
+Maybe for our anniversary.
+
+<br>
+
+Not because of a game.
+
+<br><br>
+
+Because I want to understand
+something that makes you happy.
+
+`
+
+},
+
+
+
+{
+
+
+chapter:
+"CHAPTER 03 / SATURN COORDINATES",
+
+
+text:
+
+`
+Your favorite planet is Saturn.
+
+<br><br>
+
+So I chose this place.
+
+<br>
+
+A quiet place between rings,
+stars and impossible dreams.
+
+<br><br>
+
+Somewhere our little story
+could exist.
+
+`
+
+},
+
+
+
+{
+
+
+chapter:
+"CHAPTER 04 / CREW MEMBER FOUND",
+
+
+text:
+
+`
+Every explorer needs someone
+beside them.
+
+<br><br>
+
+And if the universe lets me choose...
+
+<br>
+
+I choose you.
+
+<br><br>
+
+My favorite person.
+My favorite adventure.
+
+`
+
+},
+
+
+
+{
+
+
+chapter:
+"FINAL CHAPTER / FOREVER SIGNAL",
+
+
+text:
+
+`
+Transmission complete.
+
+<br><br>
+
+Distance:
+0 light years.
+
+<br><br>
+
+Thank you for being
+my favorite place in the universe.
+
+<br><br>
+
+❤️
+
+`
+
+}
+
+];
+
+
+
+const message=
+document.getElementById("message");
+
+
+const chapter=
+document.querySelector(".chapter");
+
+
+const bar=
+document.getElementById("bar");
+
+
+const button=
+document.getElementById("next");
+
+
+
+
+
+
+/* =========================
+   HOLOGRAM TRANSITION
+========================= */
+
+
+function transition(title,callback){
+
+
+const box=
+document.getElementById("transition");
+
+
+const txt=
+document.getElementById("transitionText");
+
+
+
+txt.innerHTML=title;
+
+
+box.classList.add("active");
+
+
+
+setTimeout(()=>{
+
+
+box.classList.remove("active");
+
+
+if(callback){
+
+callback();
+
+}
+
+
+},2500);
+
+
+}
+
+
+
+
+
+
+
+function typeWriter(element,text){
+
+
+element.innerHTML="";
+
+
+let i=0;
+
+
+let clean=text.replace(/<br>/g,"\n");
+
+
+let interval=setInterval(()=>{
+
+
+if(i<clean.length){
+
+
+element.innerHTML+=
+clean[i]=="\n"
+?"<br>"
+:clean[i];
+
+
+i++;
+
+
+}
+
+else{
+
+
+clearInterval(interval);
+
+
+}
+
+
+},20);
+
+
+
+}
+
+
+
+
+/* =========================
+   NEXT BUTTON
+========================= */
+
+
+button.onclick=()=>{
+
+
+if(current < messages.length){
+
+
+let data=messages[current];
+
+
+transition(
+
+"TRANSMISSION RECEIVED<br>"+
+data.chapter,
+
+()=>{
+
+
+chapter.innerHTML=
+data.chapter;
+
+
+
+typeWriter(
+message,
+data.text
+);
+
+
+
+bar.style.width=
+((current+1)/messages.length*100)
++"%";
+
+
+
+});
+
+
+current++;
+
+
+}
+
+
+else{
+
+
+button.innerHTML=
+"SIGNAL STORED ✦";
+
+
+button.disabled=true;
+
+
+}
+
+};
+
+
+
+
+
+
+
+/* =========================
+   PLANET SECRETS
+========================= */
+
+
+const popupMessages={
+
+
+saturn:
+
+`
+SATURN ARCHIVE
+
+Coordinates locked.
+
+A beautiful planet
+for a beautiful memory.
+`,
+
+
+moon:
+
+`
+LUNAR MESSAGE
+
+Even the quietest places
+can hold something special.
+`,
+
+
+planetBlue:
+
+`
+UNKNOWN WORLD
+
+Future destination detected.
+
+Maybe our next adventure.
+`
+
+};
+
+
+
+
+function showPopup(text){
+
+
+let popup=document.createElement("div");
+
+
+popup.style.position="fixed";
+
+popup.style.left="50%";
+
+popup.style.top="20%";
+
+popup.style.transform=
+"translateX(-50%)";
+
+
+popup.style.padding="25px";
+
+
+popup.style.width="300px";
+
+
+popup.style.background=
+"rgba(0,10,30,.9)";
+
+
+popup.style.border=
+"1px solid #9deaff";
+
+
+popup.style.borderRadius=
+"20px";
+
+
+popup.style.zIndex="200";
+
+
+popup.style.textAlign="center";
+
+
+popup.innerHTML=text;
+
+
+
+document.body.appendChild(popup);
+
+
+
+setTimeout(()=>{
+
+popup.remove();
+
+},4000);
+
+
+
+}
+
+
+
+document.querySelector(".saturn")
+.onclick=()=>{
+
+showPopup(
+popupMessages.saturn
+);
+
+};
+
+
+
+document.querySelector(".moon")
+.onclick=()=>{
+
+showPopup(
+popupMessages.moon
+);
+
+};
+
+
+
+document.querySelector(".planetBlue")
+.onclick=()=>{
+
+showPopup(
+popupMessages.planetBlue
+);
+
+};
+
+
+
+
+
+
+/* =========================
+   KEYBOARD EASTER EGGS
+========================= */
+
+
+document.addEventListener(
+"keydown",
+(e)=>{
+
+
+let key=e.key.toLowerCase();
+
+
+
+if(key==="s"){
+
+
+transition(
+"SATURN SCAN COMPLETE<br>MEMORY FOUND"
+);
+
+
+showPopup(
+"Saturn says:<br><br>Some places become special because of who we share them with."
+);
+
+
+}
+
+
+
+if(key==="l"){
+
+
+document.body.style.filter=
+"brightness(1.5)";
+
+
+setTimeout(()=>{
+
+document.body.style.filter="";
+
+},1000);
+
+
+
+}
+
+
+
+if(key==="h"){
+
+
+showPopup(
+
+`
+HIDDEN MESSAGE
+
+<br><br>
+
+The universe is huge...
+
+but somehow,
+you became my favorite part.
+
+`
+
+);
+
+
+}
+
+
+
+});
+
+
+
+
+
+
+
+/* =========================
+   RANDOM SPACE SIGNALS
+========================= */
+
+
+setInterval(()=>{
+
+
+let messages=[
+
+"UNKNOWN STAR SIGNAL DETECTED",
+
+"MEMORY FRAGMENT FOUND",
+
+"NEW COORDINATES AVAILABLE",
+
+"LOVE SIGNAL STABLE"
+
+];
+
+
+let random=
+messages[
+Math.floor(
+Math.random()*messages.length
+)
+];
+
+
+
+let signal=
+document.querySelector(".signal");
+
+
+let old=signal.innerHTML;
+
+
+
+signal.innerHTML=random;
+
+
+
+setTimeout(()=>{
+
+
+signal.innerHTML=old;
+
+
+},2500);
+
+
+
+},8000);
+
+
+</script>
+
+
+</body>
+
+</html>
